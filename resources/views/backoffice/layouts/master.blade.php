@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Wolo Space">
+    <meta name="description" content="William Leong & Co">
     <meta name="author" content="yck">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Wolo Space</title>
+    <title>William Leong & Co</title>
     <!-- Icons-->
     <link href="{{ asset('assets/backoffice/css/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backoffice/css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -43,7 +43,6 @@
 		</main>
     </div>
 
-    @include('backoffice.layouts.footer')
     
     @yield('styles')
 

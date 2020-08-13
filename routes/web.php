@@ -14,14 +14,29 @@
 Route::get('/', 'MainController@home')->name('home');
 Route::get('/firm', 'MainController@theFirm')->name('firm');
 Route::get('/people', 'MainController@people')->name('people');
-Route::get('/profile', 'MainController@profile')->name('profile');
-Route::get('/practice-area', 'MainController@practiceArea')->name('practice-area');
+
+/* Profiles */
+Route::get('/people/william-leong', 'MainController@william')->name('william');
+Route::get('/people/khairulnisa', 'MainController@khairulnisa')->name('khairulnisa');
+Route::get('/people/jessie-chong', 'MainController@jessie')->name('jessie');
+Route::get('/people/chiew-choon-man', 'MainController@man')->name('man');
+Route::get('/people/rita-heaw', 'MainController@heaw')->name('heaw');
+
+/* Pratice Areas */
+Route::get('/practice-area/litigation', 'MainController@litigation')->name('litigation');
+Route::get('/practice-area/corperate-and-commercial', 'MainController@corporateCommercial')->name('corporate-commercial');
+Route::get('/practice-area/property-and-conveyancing', 'MainController@propertyConveyancing')->name('property-conveyancing');
+Route::get('/practice-area/consumer-and-business-retail', 'MainController@consumerBusiness')->name('consumer-business');
+Route::get('/practice-area/wills-and-probate', 'MainController@willsProbate')->name('wills-probate');
+Route::get('/practice-area/divorce', 'MainController@divorce')->name('divorce');
+
 Route::get('/article', 'MainController@article')->name('article');
 Route::get('/articles', 'MainController@articles')->name('articles');
 Route::get('/contact', 'MainController@contact')->name('contact');
 
 /* BackOffice */
-Route::group(['prefix' => 'admin', 'as' => 'admin', 'namespace' => 'Backoffice', 'middleware' => 'auth'], function() {
+// Route::group(['prefix' => 'admin', 'as' => 'admin', 'namespace' => 'Backoffice', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin', 'namespace' => 'Backoffice'], function() {
 
     Route::get('dashboard', 'DashboardController@index')->name('.dashboard');
 
@@ -45,3 +60,4 @@ Route::group(['prefix' => 'admin', 'as' => 'admin', 'namespace' => 'Backoffice',
         Route::post('delete/{article}', 'ArticlesController@deleteArticle')->name('.delete');
     });
 }); 
+

@@ -4,11 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Willam Leong & Co" />
-    <meta property="og:description" content="World class lawyers delivered on a lean, technology-enabled platform serving startups, emerging growth companies, and mature enterprises." />
-    <meta property="og:url" content="index.html" />
-    <meta property="og:site_name" content="Willam Leong & Co" />
+    <meta name="type" content="website" />
+    <meta name="title" content="Willam Leong & Co" />
+    <meta name="description" content="Wlliam Leong & Co. Advocates & Solicitors. Established since 1998." />
+    <meta name="url" content="http://wleong.com.my/" />
+    <meta name="site_name" content="Willam Leong & Co" />
+    <meta name="robots" content="index, follow">
+
+    <link rel="shortcut icon" href="{{ asset("images/favicon.ico") }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset("images/favicon.ico") }}" type="image/x-icon">
+
+    {{-- Google --}}
+    <meta name="google-site-verification" content="RAfDr3EDQUvkSEQYICnIDMPJS1Y0YaZpSO2hvQT45O8" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,7 +23,7 @@
     <title>{{ config('app.name', 'William Leong & Co') }}</title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Roboto&display=swap" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @yield('pageStyles')
 

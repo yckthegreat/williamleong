@@ -1,1 +1,0 @@
-@extends('backoffice.layouts.master')

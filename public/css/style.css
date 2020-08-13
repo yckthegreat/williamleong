@@ -59,10 +59,104 @@
 
 /* VARIABLES
 ==============================================================================*/
+/* Added by yck */
+#meet-our-team {
+    border-bottom: 2px solid #b38392;
+    text-align: center;
+}
+
+.meet-our-team-description {
+    border-top: 2px solid #b38392;
+    /* border-bottom: 2px solid #b38392; */
+    margin-top: 2rem !important;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+/* .single-lawyer h3 span {
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+.single-laweyer h3 {
+    font-weight: bold;
+}
+
+.single-lawyer h3 span {
+    display: block;
+}
+
+.single-lawyer small {
+    color: #b30337;
+    display: block;
+    margin-top: 1.5rem;
+}
+
+.profile-info {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #b30337;
+}
+
+.profile-info h5 {
+    color: #b30337;
+}
+
+.profile-info span {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #363636;
+    margin-top: 1rem;
+}
+
+.people-title {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #b30337;
+}
+
+.profile-info .people-email {
+    display: block;
+}
+
+.profile-info span a {
+    color: #363636;
+}
+
+.practices-list li {
+    margin-bottom: 0;
+}
+
+.profile-big-name {
+    border-bottom: 2px solid #b30337;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-big-name h1 {
+    color: black;
+}
+
+.profile-big-name span {
+    color: black;
+    font-size: 0.8rem;
+}
 
 body
 {
-    font-family: 'Lora', serif;
+    font-family: 'Gotu', sans-serif;
     font-weight: 400;
     line-height: 1.65;
 
@@ -88,7 +182,7 @@ a
     transition: all .3s ease-out;
     text-decoration: none;
 
-    color: #195c7c;
+    color: black;
     outline: 0;
 }
 
@@ -150,7 +244,7 @@ h5,
 .slider-h3,
 h6
 {
-    font-family: 'Lora', serif;
+    font-family: 'Gotu', sans-serif;
     font-weight: 400;
 }
 
@@ -161,7 +255,7 @@ h1, .h1-span, .slider-h1
 
     margin: 0;
 
-    color: #fff;
+    color: #b30538;
 }
 .h1-span, .slider-blocks {display: block;}
 h2,
@@ -196,7 +290,7 @@ h4
 
     margin: 0 0 15px;
 
-    color: #000;
+    /* color: #000; */
 }
 
 h5
@@ -243,7 +337,7 @@ ul li
 {
     position: relative;
 
-    margin-bottom: 17px;
+    /* margin-bottom: 17px; */
     padding: 0 0 0 14px;
 }
 
@@ -618,7 +712,7 @@ address
 
 .home-main h2, #about h1
 {
-    font-size: 2.18rem;
+    font-size: 1.5rem;
 
     text-align: center;
     text-transform: uppercase;
@@ -641,14 +735,15 @@ address
     margin: 0 auto;
 }
 
+#meet-our-team .text
+{
+    max-width: 955px;
+    margin: 0 auto;
+}
+
 #about h2, #about h1
 {
     margin-bottom: 58px;
-}
-
-#about p
-{
-    margin-bottom: 108px;
 }
 
 .news
@@ -889,8 +984,7 @@ address
 
 .pa-list > figure figcaption h3
 {
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: .82rem;
+    font-size: .6rem;
     font-weight: 700;
 
     margin: 0;
@@ -1024,11 +1118,11 @@ address
 
 .banner h1, .banner .h1-span
 {
-    max-width: 752px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 36px 0;
-
-    background-color: rgba(179, 3, 55, .8);
+    border: 1px solid #b30337;
+    background-color: rgb(232, 224, 215, 0.8);;
 }
 
 #main
@@ -1052,8 +1146,12 @@ address
 {
     padding: 23px 30px 23px 30px;
 
-    /*border: 1px solid #dfdfdf;*/
-    background-color: #e7e7e7;
+    border: 1px solid #dfdfdf;
+    background-color: #e8e0d7;
+}
+
+.sidebar .section.pages img {
+    border: 2px solid #b30337;
 }
 
 .sidebar .section.pages h3
@@ -1074,7 +1172,7 @@ address
     color: #b30337;
     text-shadow: -1px 0 0 #b30337;
 }
-.sidebar ul {margin-bottom: 60px;}
+.sidebar ul {margin-bottom: 35px;}
 .sidebar ul ul {margin-top: 15px;}
 .sidebar ul:last-child, .sidebar ul:last-of-type {margin-bottom: 0;}
 .sidebar ul.atty-info li {padding-left: 0;}
@@ -1984,7 +2082,7 @@ footer address a:focus
 
     display: inline-block;
 
-    padding-bottom: 24px;
+    /* padding-bottom: 24px; */
 
     letter-spacing: 1.1px;
 
@@ -2809,7 +2907,7 @@ select:focus
     {
         display: inline-block;
 
-        padding: 12px 10px 13px 10px;
+        /* padding: 12px 10px 13px 10px; */
 
         border-bottom: none;
     }
@@ -2934,7 +3032,7 @@ select:focus
 .single-lawyer a, .single-attorneys .single-lawyer { 
     display:block; 
     position: relative; 
-    background: #b30337; 
+    background: #e8e0d7; 
     padding:25px 25px 0; 
     max-width: 405px; 
     margin: 0 auto; 
@@ -2997,28 +3095,27 @@ select:focus
 
 .single-lawyer h3 { 
     display: table; 
-    height: 120px; 
+    /* height: 120px;  */
     width: 100%; 
-    color:#fff; 
+    color:black; 
     font-weight: 400; 
     text-align: center; 
-    margin:0; 
-    padding:0; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+    margin: 0; 
+    padding: 2rem 0; 
+    /* text-transform: uppercase;  */
+    /* letter-spacing: 2px;  */
 }
 
-.single-lawyer h3 span { display: table-cell; vertical-align: middle; }
-.large-10 { width:83.34%; }
-.large-9 { width: 75%; }
-.large-8 { width: 66.67%; }
-.large-7 { width: 58.34%; }
-.large-6 { width: 50%; }
-.large-5 { width: 41.66%; }
-.large-4 { width: 33.33%; }
-.large-3 { width: 25%; }
-.large-2 { width: 16.66%; }
-.large-1 { width: 8.33%; }
+.large-10.single-lawyer { width:83.34%; }
+.large-9.single-lawyer { width: 75%; }
+.large-8.single-lawyer { width: 66.67%; }
+.large-7.single-lawyer { width: 58.34%; }
+.large-6.single-lawyer { width: 50%; }
+.large-5.single-lawyer { width: 41.66%; }
+.large-4.single-lawyer { width: 33.33%; }
+.large-3.single-lawyer { width: 25%; }
+.large-2.single-lawyer { width: 16.66%; }
+.large-1.single-lawyer { width: 8.33%; }
 
 /* @media (min-width: 1024px){
   .single-lawyer:nth-child(3n) a{ float: right; }
@@ -3026,15 +3123,18 @@ select:focus
   .single-attorneys .content .arrow { left: 189px; right: initial; }
 } */
 
-.single-lawyer h3 { font-size: calc(0.9375rem + ((1vw - 3.2px) * 0.7292)); line-height: calc(2rem + ((1vw - 4.8px) * 0.8333));}
+.single-lawyer h3 { 
+    font-size: calc(0.9375rem + ((1vw - 3.2px) * 0.7292)); 
+    /* line-height: calc(2rem + ((1vw - 4.8px) * 0.8333)); */
+}
 
 /* Prevent font scaling beyond this breakpoint */
 @media (min-width: 1280px) {
     .tagline h2 { font-size: 38px; }
     .tagline h2 em { font-size: 60px; }
-    h1 {  font-size: 50px; }
-    h2 { font-size:34px; }
-    h3 { font-size:30px; }
+    h1 {  font-size: 32px; }
+    h2 { font-size:25px; }
+    h3 { font-size:22px; }
     .single-practices .content h1, .page-template-template-practices .accordion section a h2, .contact-section button, #cf7contactform .wpcf7-submit { font-size: 26px; }
     .home .main h2 { font-size: 75px; }
     .home .main h3 { font-size: 44px; }
@@ -3042,10 +3142,10 @@ select:focus
     h4 { font-size:24px; }
     h5 { font-size: 20px; }
     h6 { font-size: 18px; }
-    p, ul, li { font-size:22px; line-height:44px;}
+    p, ul, li { font-size:17px; line-height:44px;}
     ul li:before, .sidebar .box-list ul li a:before { font-size: 20px; line-height: 44px; }
     nav ul li a { font-size: 16px; }
-    .banner h1, .banner p  { font-size: 60px; }
+    .banner h1, .banner p  { font-size: 40px; }
     .post h2, .post h1 { font-size: 26px; }
     .wp-pagenavi { margin: 25px 0 45px; }
     .wp-pagenavi span, .wp-pagenavi a { font-size: 31px; }
@@ -3065,19 +3165,19 @@ select:focus
     .blog .banner img { position: relative; bottom: initial; margin-bottom: 20px;}
     .blog .banner .row { position: relative; bottom: initial; padding-bottom: 30px; }
     .principle-blocks { width: 100%; }
-    .medium-12, .medium-11, .medium-10, .medium-9, .medium-8, .medium-7, .medium-6, .medium-5, .medium-4, .medium-3, .medium-2, .medium-1 { width: 100%; }
-    .small-12 { width: 100%; }
-    .small-11 { width:91.67%; }
-    .small-10 { width:83.34%; }
-    .small-9 { width: 75%; }
-    .small-8 { width: 66.67%; }
-    .small-7 { width: 58.34%; }
-    .small-6 { width: 50%; }
-    .small-5 { width: 41.66%; }
-    .small-4 { width: 33.33%; }
-    .small-3 { width: 25%; }
-    .small-2 { width: 16.66%; }
-    .small-1 { width: 8.33%; }
+    .medium-12.single-lawyer, .medium-11.single-lawyer, .medium-10.single-lawyer, .medium-9.single-lawyer, .medium-8.single-lawyer, .medium-7.single-lawyer, .medium-6.single-lawyer, .medium-5.single-lawyer, .medium-4.single-lawyer, .medium-3.single-lawyer, .medium-2.single-lawyer, .medium-1.single-lawyer { width: 100%; }
+    .small-12.single-lawyer { width: 100%; }
+    .small-11.single-lawyer { width:91.67%; }
+    .small-10.single-lawyer { width:83.34%; }
+    .small-9.single-lawyer { width: 75%; }
+    .small-8.single-lawyer { width: 66.67%; }
+    .small-7.single-lawyer { width: 58.34%; }
+    .small-6.single-lawyer { width: 50%; }
+    .small-5.single-lawyer { width: 41.66%; }
+    .small-4.single-lawyer { width: 33.33%; }
+    .small-3.single-lawyer { width: 25%; }
+    .small-2.single-lawyer { width: 16.66%; }
+    .small-1.single-lawyer { width: 8.33%; }
     .banner .sub-menu { margin: 0 auto 20px; display: block; }
     .banner .sub-menu > .button { display: block; max-width: 391px; margin: 0 auto; box-sizing: border-box;}
     .attorney-slider .white-bg { background:none !important; }

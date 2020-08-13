@@ -21,15 +21,60 @@ class MainController extends Controller
         return view('people');
     }
 
-    public function profile() {
+    /* Profiles */
 
-        return view('profile');
+    public function william() {
+
+        return view('profiles.william');
     }
 
-    public function practiceArea() {
+    public function khairulnisa() {
 
-        return view('practice_area');
+        return view('profiles.khairulnisa');
     }
+
+    public function jessie() {
+
+        return view('profiles.jessie');
+    }
+
+    public function man() {
+
+        return view('profiles.man');
+    }
+
+    public function heaw() {
+
+        return view('profiles.heaw');
+    }
+    
+
+    /* Practices */
+    public function litigation() {
+
+        return view('practices.litigation');
+    }
+    public function corporateCommercial() {
+
+        return view('practices.corporate-commercial');
+    }
+    public function propertyConveyancing() {
+
+        return view('practices.property-conveyancing');
+    }
+    public function consumerBusiness() {
+
+        return view('practices.consumer-business');
+    }
+    public function willsProbate() {
+
+        return view('practices.wills-probate');
+    }
+    public function divorce() {
+
+        return view('practices.divorce');
+    }
+    /* Practices end */
 
     public function article() {
 

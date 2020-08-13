@@ -3,13 +3,13 @@
 @section('content')
 <div class="top-spacer"></div>
 
-<div class="banner hide-for-small-only" style="background-image: url('{{ asset("images/government-investigations.jpg") }}')">
+<div class="banner hide-for-small-only" style="background-image: url('{{ asset("images/the_firm.jpg") }}')">
     <div>
         <h1>Our People</h1>                
     </div>
 </div>
 
-<div class="banner show-for-small-only" style="background-image: url('{{ asset("images/government-investigations-mobile.jpg") }}')">
+<div class="banner show-for-small-only" style="background-image: url('{{ asset("images/the_firm_mobile.jpg") }}')">
     <div>
         <h1>Our People</h1>                
     </div>
@@ -21,38 +21,77 @@
             <div class="spacer" style="padding-right: 0px;">
                 <div class="att-list">
                     <div class="large-4 medium-6 small-12 columns single-lawyer">
-                        <a href="{{ route('profile') }}">
+                        <a href="{{ route('william') }}">
                             <div class="image-box">
-                                <img src="{{ asset("images/james-haliczer-1.jpg") }}" alt="" />
+                                <img src="{{ asset("images/william.jpg") }}" alt="" />
                                 <div class="inner-border"></div>
                             </div>
-                            <h3><span>James S. Haliczer</span></h3>
+                            <h3>
+                                <span>William Leong Jee Keen</span>
+                                <small>Managing Partner</small>
+                            </h3>
                             <div class="hover">
-                                <span class="button">View Bio</span>
+                                
                             </div>
                         </a>
                     </div>
                     <div class="large-4 medium-6 small-12 columns single-lawyer">
-                        <a href="{{ route('profile') }}">
+                        <a href="{{ route('khairulnisa') }}">
                             <div class="image-box">
-                                <img src="{{ asset("images/Eugene-Pettis-Landing.jpg") }}" alt="" />
+                                <img src="{{ asset("images/partner2_2.jpg") }}" alt="" />
                                 <div class="inner-border"></div>
                             </div>
-                            <h3><span>Eugene K. Pettis</span></h3>
+                            <h3>
+                                <span>Khairulnisa Binti Mohd Mustafa</span>
+                                <small>Partner</small>
+                            </h3>
                             <div class="hover">
-                                <span class="button">View Bio</span>
+                                
                             </div>
                         </a>
                     </div>
                     <div class="large-4 medium-6 small-12 columns single-lawyer">
-                        <a href="{{ route('profile') }}">
+                        <a href="{{ route('jessie') }}">
                             <div class="image-box">
-                                <img src="{{ asset("images/Richard-Schwamm-Landing.jpg") }}" alt="" />
+                                <img src="{{ asset("images/partner1.jpg") }}" alt="" />
                                 <div class="inner-border"></div>
                             </div>
-                            <h3><span>Richard B. Schwamm</span></h3>
+                            <h3>
+                                <span>Jessie Chong Bee Choo</span>
+                                <small>Partner</small>
+                            </h3>
                             <div class="hover">
-                                <span class="button">View Bio</span>
+                                
+                            </div>
+                        </a>
+                    </div>
+                    <div class="large-4 medium-6 small-12 columns single-lawyer">
+                        <a href="{{ route('man') }}">
+                            <div class="image-box">
+                                <img src="{{ asset("images/man.jpg") }}" alt="" />
+                                <div class="inner-border"></div>
+                            </div>
+                            <h3>
+                                <span>Chiew Choon Man</span>
+                                <small>Associate</small>
+                            </h3>
+                            <div class="hover">
+                                
+                            </div>
+                        </a>
+                    </div>
+                    <div class="large-4 medium-6 small-12 columns single-lawyer">
+                        <a href="{{ route('heaw') }}">
+                            <div class="image-box">
+                                <img src="{{ asset("images/heaw.jpg") }}" alt="" />
+                                <div class="inner-border"></div>
+                            </div>
+                            <h3>
+                                <span>Rita Heaw Yu Hoey</span>
+                                <small>Associate</small>
+                            </h3>
+                            <div class="hover">
+                                
                             </div>
                         </a>
                     </div>

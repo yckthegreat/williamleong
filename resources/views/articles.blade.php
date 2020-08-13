@@ -3,13 +3,13 @@
 @section('content')
 <div class="top-spacer"></div>
 
-<div class="banner hide-for-small-only" style="background-image: url('{{ asset("images/news.jpg") }}')">
+<div class="banner hide-for-small-only" style="background-image: url('{{ asset("images/the_firm.jpg") }}')">
     <div>
         <h1>Articles</h1>                
     </div>
 </div>
 
-<div class="banner show-for-small-only" style="background-image: url('{{ asset("images/news-mobile.jpg") }}')">
+<div class="banner show-for-small-only" style="background-image: url('{{ asset("images/the_firm_mobile.jpg") }}')">
     <div>
         <h1>Articles</h1>                
     </div>

@@ -12191,7 +12191,7 @@ canvas {
   position: relative;
   -ms-flex-direction: row;
   flex-direction: row;
-  height: 55px;
+  height: 75px;
   padding: 0;
   margin: 0;
   background-color: #fff;
@@ -12582,7 +12582,7 @@ canvas {
   flex-direction: column;
   padding: 0;
   color: #fff;
-  background: #0c2340;
+  background: #b30337;
 }
 
 .sidebar .sidebar-close {
@@ -12973,8 +12973,8 @@ canvas {
 
 .sidebar .sidebar-minimizer {
   position: relative;
-  -ms-flex: 0 0 50px;
-  flex: 0 0 50px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
   border: 0;
@@ -13838,7 +13838,7 @@ html[dir="rtl"] .aside-menu {
     width: 100%;
   }
   .header-fixed .app-body {
-    margin-top: 55px;
+    margin-top: 75px;
   }
   .sidebar-fixed .sidebar {
     position: fixed;
