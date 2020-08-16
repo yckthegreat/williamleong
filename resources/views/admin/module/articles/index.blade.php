@@ -1,43 +1,41 @@
 @extends('adminlte::page')
 
-@section('title', 'People')
+@section('title', 'Article')
 
 @section('content_header')
-    <h1>People</h1>
+    <h1>Article</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('admin.people.create') }}" class="btn btn-success">Create</a>
+        <a href="{{ route('admin.article.create') }}" class="btn btn-success">Create</a>
     </div>
     <div class="card-body">
         <table class="datatable table table-bordered table-hover">
             <thead>
             <tr>
                 <th>No.</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Designation</th>
+                <th>Title</th>
+                <th>Content</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($people as $ppl)
+                @foreach ($articles as $article)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $ppl->name }}</td>
-                        <td>{{ $ppl->email }}</td>
-                        <td>{{ $ppl->designation }}</td>
+                        <td>{{ $article->title }}</td>
+                        <td>{{ strip_tags($article->body) > 250 ? substr(strip_tags($article->body), 0 , 250) . "..." : strip_tags($article->body) }}</td>
                         <td>
                             <div class="d-flex">
-                                {{-- <a href="{{ route('admin.people.show', ['person' => $ppl->id]) }}" class="btn btn-info">
+                                {{-- <a href="{{ route('admin.article.show', ['article' => $article->id]) }}" class="btn btn-info">
                                     <i class="fas fa-search"></i>
                                 </a> --}}
-                                <a href="{{ route('admin.people.edit', ['person' => $ppl->id]) }}" class="btn btn-warning">
+                                <a href="{{ route('admin.article.edit', ['article' => $article->id]) }}" class="btn btn-warning">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
-                                <form method="POST" action="{{ route('admin.people.destroy', ['person' => $ppl->id]) }}">
+                                <form method="POST" action="{{ route('admin.article.destroy', ['article' => $article->id]) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-delete">

@@ -17,6 +17,7 @@ Route::domain('admin.'. env('APP_URL'))->group(function () {
         Route::get('/', 'BackOffice\DashboardController@index')->name('home');
         Route::group(['as' => 'admin.'], function () {
             Route::resource('article', 'BackOffice\ArticlesController');
+            Route::post('/article/upload-image', 'BackOffice\ArticlesController@upload_image')->name('article.upload-image');
             Route::resource('people', 'BackOffice\PeopleController');
         });
     });
@@ -43,7 +44,7 @@ Route::domain(env('APP_URL'))->group(function () {
     Route::get('/practice-area/wills-and-probate', 'MainController@willsProbate')->name('wills-probate');
     Route::get('/practice-area/divorce', 'MainController@divorce')->name('divorce');
 
-    Route::get('/article', 'MainController@article')->name('article');
+    Route::get('/article/{article}', 'MainController@article')->name('article');
     Route::get('/articles', 'MainController@articles')->name('articles');
     Route::get('/contact', 'MainController@contact')->name('contact');
 

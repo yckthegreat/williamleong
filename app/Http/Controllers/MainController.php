@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\People;
 use Illuminate\Http\Request;
 
@@ -82,14 +83,18 @@ class MainController extends Controller
     }
     /* Practices end */
 
-    public function article() {
+    public function article($article) {
 
-        return view('article');
+        $article = Article::whereSlug($article)->firstOrFail();
+        return view('articles.index', compact('article'));
     }
 
     public function articles() {
 
-        return view('articles');
+        $articles = Article::paginate(3);
+        $recent_articles = Article::orderByDesc('created_at')->take(5)->get();
+
+        return view('articles', compact('articles', 'recent_articles'));
     }
 
     public function contact() {

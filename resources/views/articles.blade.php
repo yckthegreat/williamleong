@@ -5,13 +5,13 @@
 
 <div class="banner hide-for-small-only" style="background-image: url('{{ asset("images/the_firm.jpg") }}')">
     <div>
-        <h1>Articles</h1>                
+        <h1>Articles</h1>
     </div>
 </div>
 
 <div class="banner show-for-small-only" style="background-image: url('{{ asset("images/the_firm_mobile.jpg") }}')">
     <div>
-        <h1>Articles</h1>                
+        <h1>Articles</h1>
     </div>
 </div>
 
@@ -19,53 +19,37 @@
     <div class="grid-x grid-padding-x">
         <div class="large-8 cell content">
             <div class="spacer">
-                <article class="post">
-                    <div class="post-head">
-                        <h2><a href="{{ route('article') }}">Lorem Ipsum is simply dummy text of the printing and typesetting industry</a></h2>
-                        <div class="info">
-                            <span class="date">Dec 30, 2018</span>
+                @foreach ($articles as $article)
+                    <article class="post">
+                        <div class="post-head">
+                            <h2><a href="{{ route('article', ['article' => $article->slug]) }}">{{ $article->title }}</a></h2>
+                            <div class="info">
+                                <span class="date">{{ $article->created_at->format('M d, Y') }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="entry">
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-                    </div>
-                    <div class="more-options">
-                        <a href="{{ route('article') }}" class="btn read-more">Learn more</a>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <div class="post-head">
-                        <h2><a href="{{ route('article') }}">Lorem Ipsum is simply dummy text of the printing and typesetting industry</a></h2>
-                        <div class="info">
-                            <span class="date">Dec 30, 2018</span>
+                        <div class="entry">
+                            <p>
+                                {{ strip_tags($article->body) > 250 ? substr(strip_tags($article->body), 0 , 250) . "..." : strip_tags($article->body) }}
+                            </p>
                         </div>
-                    </div>
-                    <div class="entry">
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-                    </div>
-                    <div class="more-options">
-                        <a href="{{ route('article') }}" class="btn read-more">Learn more</a>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <div class="post-head">
-                        <h2><a href="{{ route('article') }}">Lorem Ipsum is simply dummy text of the printing and typesetting industry</a></h2>
-                        <div class="info">
-                            <span class="date">Dec 30, 2018</span>
+                        <div class="more-options">
+                            <a href="{{ route('article', ['article' => $article->slug]) }}" class="btn read-more">Learn more</a>
                         </div>
-                    </div>
-                    <div class="entry">
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-                    </div>
-                    <div class="more-options">
-                        <a href="{{ route('article') }}" class="btn read-more">Learn more</a>
-                    </div>
-                </article>
+                    </article>
+                @endforeach
 
                 <div class='wp-pagenavi'>
-                    <span class='pages'>Page 1 of 2</span><span class='current'>1</span><a class="page larger" title="Page 2" href="page/2/index.html">2</a><a class="nextpostslink" rel="next" href="page/2/index.html">Next <i class="fa fa-long-arrow-right"></i></a>
+                    <span class='pages'>Page {{ $articles->lastPage() }} of {{ $articles->total() }}</span>
+                    @for($i = 1; $i < $articles->lastPage() + 1; $i++)
+                        @if($articles->currentPage() == $i)
+                        <span class='current'>{{ $i }}</span>
+                        @else
+                        <a class="page larger" title="Page {{ $i }}" href="{{ $articles->url($i) }}">{{ $i }}</a>
+                        @endif
+                    @endfor
+                    @if($articles->hasMorePages())
+                        <a class="nextpostslink" rel="next" href="{{ $articles->nextPageUrl() }}">Next <i class="fa fa-long-arrow-right"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -73,10 +57,13 @@
             <div class="section pages">
                 <h3>Recent Articles</h3>
                 <ul>
-                    <li class="cat-item cat-item-10"><a href="category/firm-news/index.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry</a>
+                    @foreach ($recent_articles as $article)
+                    <li class="cat-item cat-item-10">
+                        <a href="{{ route('article', ['article' => $article->slug]) }}">
+                            {{ $article->title }}
+                        </a>
                     </li>
-                    <li class="cat-item cat-item-10"><a href="category/firm-news/index.html">Lorem Ipsum is simply dummy</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
