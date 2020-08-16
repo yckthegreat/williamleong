@@ -17,9 +17,10 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->text('title');
-            $table->text('body');
+            $table->longText('body');
             $table->integer('active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\People;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,8 +18,14 @@ class MainController extends Controller
     }
 
     public function people() {
+        $people = People::get();
+        return view('people', compact('people'));
+    }
 
-        return view('people');
+    public function people_show($people) {
+
+        $people = People::whereSlug($people)->firstOrFail();
+        return view('profiles.index', compact('people'));
     }
 
     /* Profiles */
@@ -47,7 +54,6 @@ class MainController extends Controller
 
         return view('profiles.heaw');
     }
-    
 
     /* Practices */
     public function litigation() {

@@ -12,47 +12,65 @@ use App\Media;
 
 class PeopleController extends Controller
 {
-    public function overview() {
+    public function index() {
 
-        $allPeople = People::orderBy('sequence')->get();
+        $people = People::get();
 
-        return view('backoffice.people.overview', compact('allPeople'));
+        return view('admin.module.people.index', compact('people'));
     }
 
-    public function addPeople() {
+    public function create() {
 
-        return view('backoffice.people.create');
+        return view('admin.module.people.create');
     }
 
-    public function editPeople(People $people) {
+    public function edit(People $person) {
 
-        /* Get people image */
-        $peopleImage = Media::where('owner_id' , $people->id)
-                       ->where('owner_type' , 'people_image')
-                       ->first();
-        
-        return view('backoffice.people.edit', compact('people', 'peopleImage'));
+        return view('admin.module.people.edit', compact('person'));
     }
 
-    public function storePeople(Request $request) {
+    public function store(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'peopleImage' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:1024'
+            'name' => 'required|string',
+            'designation' => 'required|string',
+            'email' => 'required|email|string',
+            'qualification' => 'required|string',
+            'experience' => 'required|string',
+            'background' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $people = new People;
-        $people->name = $request->get('name');
-        $people->sequence = $request->get('sequence');
-        $people->save();
+        $slug = mb_strtolower(trim(mb_ereg_replace('/[^A-Za-z0-9-]+/', '-', $request->get('name')), '-'));
+        $unique = false;
+        $counter = 0;
+        while(!$unique) {
+            $newSlug = People::whereSlug($slug)->first();
+            if(empty($newSlug)) {
+                $unique = true;
+            }else {
+                $slug = mb_strtolower(trim(mb_ereg_replace('/[^A-Za-z0-9-]+/', '-', $request->get('name')), '-')) . '-' . $counter;
+            }
+            $counter++;
+        }
 
-        if($request->hasFile('peopleImage')){
-            $file = $request->file('peopleImage');
-            $file_size = $request->file('peopleImage')->getSize();
+        $people = People::create([
+            "slug" => $slug,
+            "name" => $request->get('name'),
+            "email" => $request->get('email'),
+            "designation" => $request->get('designation'),
+            "qualification" => $request->get('qualification'),
+            "experience" => $request->get('experience'),
+            "background" => $request->get('background'),
+        ]);
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $file_size = $request->file('image')->getSize();
             $name = "people_" .rand(1111,9999).'_'.date('Ymdhis');
             $extension = strtolower($file->getClientOriginalExtension());
             $name_extension = $name . '.' . $extension;
@@ -60,51 +78,64 @@ class PeopleController extends Controller
             $imagePath = $destinationPath. "/".  $name;
             $file->move($destinationPath, $name_extension);
 
-            $media = new Media;
-            $media->owner_id = $people->id;
-            $media->owner_type = 'people_image';
-            $media->name = $name;
-            $media->url = '/uploads/people/';
-            $media->extension = $extension;
-            $media->size = $file_size;
-            $media->mime = $file->getClientMimeType();
-            $media->save();
+            $media = Media::create([
+                "ownerable_id" => $people->id,
+                "ownerable_type" => People::class,
+                "name" => $name,
+                "url" => "/uploads/people/",
+                "extension" => $extension,
+                "size" => $file_size,
+                "mime" => $file->getClientMimeType()
+            ]);
         }
 
-        return redirect()->back()->with('success' , 'People added successfully.');
+        return back()->with('success' , 'People added successfully.');
     }
 
-    public function updatePeople(Request $request, People $people) {
+    public function update(Request $request, People $person) {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|string',
+            'designation' => 'required|string',
+            'email' => 'required|email|string',
+            'qualification' => 'required|string',
+            'experience' => 'required|string',
+            'background' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $people->name = $request->get('name');
-        $people->sequence = $request->get('sequence');
-        $people->save();
-
-        if($request->hasFile('peopleImage')){
-
-            $media = Media::where('owner_id' , $people->id)->where('owner_type' , 'people_image')->first();
-
-            if(!empty($media)) {
-
-                $image_name = $media->name . '.' . $media->extension;
+        $slug = mb_strtolower(trim(mb_ereg_replace('/[^A-Za-z0-9-]+/', '-', $request->get('name')), '-'));
+        if($slug != $person->slug) {
+            $unique = false;
+            $counter = 0;
+            while(!$unique) {
+                $newSlug = People::whereSlug($slug)->first();
+                if(empty($newSlug)) {
+                    $unique = true;
+                }else {
+                    $slug = mb_strtolower(trim(mb_ereg_replace('/[^A-Za-z0-9-]+/', '-', $request->get('name')), '-')) . '-' . $counter;
+                }
+                $counter++;
             }
+        }
 
-            if(!empty($image_name)) {
-                $filename = public_path().'/uploads/people/'.$image_name;
-                File::delete($filename);
-                $media->delete();
-            }
+        $person->update([
+            "slug" => $slug,
+            "name" => $request->get('name'),
+            "email" => $request->get('email'),
+            "designation" => $request->get('designation'),
+            "qualification" => $request->get('qualification'),
+            "experience" => $request->get('experience'),
+            "background" => $request->get('background'),
+        ]);
 
-            $file = $request->file('peopleImage');
-            $file_size = $request->file('peopleImage')->getSize();
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $file_size = $request->file('image')->getSize();
             $name = "people_" .rand(1111,9999).'_'.date('Ymdhis');
             $extension = strtolower($file->getClientOriginalExtension());
             $name_extension = $name . '.' . $extension;
@@ -112,23 +143,24 @@ class PeopleController extends Controller
             $imagePath = $destinationPath. "/".  $name;
             $file->move($destinationPath, $name_extension);
 
-            $media = new Media;
-            $media->owner_id = $people->id;
-            $media->owner_type = 'people_image';
-            $media->name = $name;
-            $media->url = '/uploads/people/';
-            $media->extension = $extension;
-            $media->size = $file_size;
-            $media->mime = $file->getClientMimeType();
-            $media->save();
+            $media = Media::create([
+                "ownerable_id" => $person->id,
+                "ownerable_type" => People::class,
+                "name" => $name,
+                "url" => "/uploads/people/",
+                "extension" => $extension,
+                "size" => $file_size,
+                "mime" => $file->getClientMimeType()
+            ]);
+
         }
 
-        return redirect()->back()->with('success' , 'People updated successfully.');
+        return back()->with('success' , 'People updated successfully.');
     }
 
-    public function deletePeople(People $people) {
+    public function destroy(People $person) {
 
-        $people->delete();
-        return redirect()->route('admin.people.overview')->with('success' , 'People deleted successfully.');
+        $person->delete();
+        return redirect()->route('admin.people.index')->with('success' , 'People deleted successfully.');
     }
 }

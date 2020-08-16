@@ -5,13 +5,13 @@
 
 <div class="banner hide-for-small-only" style="background-image: url('{{ asset("images/the_firm.jpg") }}')">
     <div>
-        <h1>Our People</h1>                
+        <h1>Our People</h1>
     </div>
 </div>
 
 <div class="banner show-for-small-only" style="background-image: url('{{ asset("images/the_firm_mobile.jpg") }}')">
     <div>
-        <h1>Our People</h1>                
+        <h1>Our People</h1>
     </div>
 </div>
 
@@ -20,7 +20,24 @@
         <div class="large-12 cell content">
             <div class="spacer" style="padding-right: 0px;">
                 <div class="att-list">
-                    <div class="large-4 medium-6 small-12 columns single-lawyer">
+                    @foreach ($people as $ppl)
+                        <div class="large-4 medium-6 small-12 columns single-lawyer">
+                            <a href="{{ route('people.show', ['people' => $ppl->slug]) }}">
+                                <div class="image-box">
+                                    <img src="{{ $ppl->image->full_path ?? '' }}" alt="" />
+                                    <div class="inner-border"></div>
+                                </div>
+                                <h3>
+                                    <span>{{ $ppl->name }}</span>
+                                    <small>{{ $ppl->designation }}</small>
+                                </h3>
+                                <div class="hover">
+
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                    {{-- <div class="large-4 medium-6 small-12 columns single-lawyer">
                         <a href="{{ route('william') }}">
                             <div class="image-box">
                                 <img src="{{ asset("images/william.jpg") }}" alt="" />
@@ -31,7 +48,7 @@
                                 <small>Managing Partner</small>
                             </h3>
                             <div class="hover">
-                                
+
                             </div>
                         </a>
                     </div>
@@ -46,7 +63,7 @@
                                 <small>Partner</small>
                             </h3>
                             <div class="hover">
-                                
+
                             </div>
                         </a>
                     </div>
@@ -61,7 +78,7 @@
                                 <small>Partner</small>
                             </h3>
                             <div class="hover">
-                                
+
                             </div>
                         </a>
                     </div>
@@ -76,7 +93,7 @@
                                 <small>Associate</small>
                             </h3>
                             <div class="hover">
-                                
+
                             </div>
                         </a>
                     </div>
@@ -91,11 +108,11 @@
                                 <small>Associate</small>
                             </h3>
                             <div class="hover">
-                                
+
                             </div>
                         </a>
-                    </div>
-                    
+                    </div> --}}
+
                     <div class="clear"></div>
                 </div>
             </div>
