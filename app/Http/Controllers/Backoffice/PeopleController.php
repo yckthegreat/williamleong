@@ -39,7 +39,8 @@ class PeopleController extends Controller
             'experience' => 'nullable|string',
             'position_held' => 'nullable|string',
             'background' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            // 'sequence' => 'nullable|integer|min:0'
         ]);
 
         if ($validator->fails()) {
@@ -59,6 +60,14 @@ class PeopleController extends Controller
             $counter++;
         }
 
+        $sequence = People::max('sequence');
+
+        if(empty($sequence)) {
+            $sequence = 1;
+        }else {
+            $sequence += 1;
+        }
+
         $people = People::create([
             "slug" => $slug,
             "name" => $request->get('name'),
@@ -68,6 +77,7 @@ class PeopleController extends Controller
             "experience" => $request->get('experience'),
             'position_held' => $request->get('position_held'),
             "background" => $request->get('background'),
+            "sequence" => $sequence
         ]);
 
         if($request->hasFile('image')){
@@ -104,7 +114,8 @@ class PeopleController extends Controller
             'experience' => 'nullable|string',
             'position_held' => 'nullable|string',
             'background' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            'sequence' => 'required|integer|min:0'
         ]);
 
         if ($validator->fails()) {
@@ -126,6 +137,13 @@ class PeopleController extends Controller
             }
         }
 
+        $sequence = $request->get('sequence');
+        if($sequence < $person->sequence) {
+            People::where('id', '!=', $person->id)->where('sequence', '<', $sequence)->increment('sequence');
+        }elseif($sequence > $person->sequence) {
+            People::where('id', '!=', $person->id)->where('sequence', '>', $sequence)->decrement('sequence');
+        }
+
         $person->update([
             "slug" => $slug,
             "name" => $request->get('name'),
@@ -135,6 +153,7 @@ class PeopleController extends Controller
             "experience" => $request->get('experience'),
             'position_held' => $request->get('position_held'),
             "background" => $request->get('background'),
+            "sequence" => $sequence
         ]);
 
         if($request->hasFile('image')){

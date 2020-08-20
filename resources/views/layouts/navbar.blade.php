@@ -1,4 +1,4 @@
-<nav id="menu" class="navigation">   
+<nav id="menu" class="navigation">
         <ul id="menu-main-navigation" class="">
             <li class=""><a href="{{ route('firm') }}">The Firm</a></li>
             <li class=""><a href="{{ route('people') }}">Our People</a></li>
@@ -14,7 +14,7 @@
             </li>
             <li id="menu-item-329" class=" menu-item-329"><a href="{{ route('articles') }}">Articles</a></li>
             <li id="menu-item-142" class=" menu-item-142"><a href="{{ route('contact') }}">Contact</a></li>
-        </ul>        
+        </ul>
     </nav>
     <!-- Mobile Menu ends here -->
     <header class="Fixed">
@@ -36,10 +36,12 @@
                                 <li class=""><a href="{{ route('divorce') }}">Divorce</a></li>
                             </ul>
                         </li>
+                        @if(\App\Article::count() >= 1)
                         <li class=""><a href="{{ route('articles') }}">Articles</a></li>
+                        @endif
                         <li class=""><a href="{{ route('contact') }}">Contact</a></li>
-                    </ul>                    
-                </nav> 
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>

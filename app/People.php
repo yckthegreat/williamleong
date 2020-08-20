@@ -18,6 +18,7 @@ class People extends Model
         'experience',
         'position_held',
         'background',
+        'sequence'
     ];
 
     public function image() {

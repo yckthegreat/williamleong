@@ -23,6 +23,7 @@ class CreatePeopleTable extends Migration
             $table->longText('experience')->nullable();
             $table->longText('position_held')->nullable();
             $table->longText('background')->nullable();
+            $table->integer('sequence')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

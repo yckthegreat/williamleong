@@ -99,6 +99,15 @@
                     </textarea>
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="sequence">Sequence</label>
+                <div class="col-md-9">
+                    <input class="form-control" id="sequence" type="number" name="sequence" placeholder="Sequence" value="{{ old('sequence', $person->sequence) }}"/>
+                    @if($errors->has('sequence'))
+                        <small style="color: red;">{{$errors->first('sequence')}}</small>
+                    @endif
+                </div>
+            </div>
         </div>
 
         <div class="card-footer">

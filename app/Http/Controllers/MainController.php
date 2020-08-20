@@ -19,7 +19,7 @@ class MainController extends Controller
     }
 
     public function people() {
-        $people = People::get();
+        $people = People::orderBy('sequence')->get();
         return view('people', compact('people'));
     }
 
