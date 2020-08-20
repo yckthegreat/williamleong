@@ -16,6 +16,7 @@ class People extends Model
         'email',
         'qualification',
         'experience',
+        'position_held',
         'background',
     ];
 

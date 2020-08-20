@@ -14,11 +14,11 @@
 Route::domain('admin.'. env('APP_URL'))->group(function () {
     Auth::routes();
     Route::group(['middleware' => ['auth:admin']], function () {
-        Route::get('/', 'BackOffice\DashboardController@index')->name('home');
+        Route::get('/', 'Backoffice\DashboardController@index')->name('home');
         Route::group(['as' => 'admin.'], function () {
-            Route::resource('article', 'BackOffice\ArticlesController');
-            Route::post('/article/upload-image', 'BackOffice\ArticlesController@upload_image')->name('article.upload-image');
-            Route::resource('people', 'BackOffice\PeopleController');
+            Route::resource('article', 'Backoffice\ArticlesController');
+            Route::post('/article/upload-image', 'Backoffice\ArticlesController@upload_image')->name('article.upload-image');
+            Route::resource('people', 'Backoffice\PeopleController');
         });
     });
 });

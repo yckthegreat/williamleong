@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="qualification">Qualification</label>
+                    <label class="col-md-3 col-form-label" for="qualification">Professional Qualification & Membership</label>
                     <div class="col-md-9">
                         <textarea class="form-control ckeditor" id="qualification" name="qualification" placeholder="Qualification">
                             {{ old('qualification') }}
@@ -79,6 +79,14 @@
                     <div class="col-md-9">
                         <textarea class="form-control ckeditor" id="experience" name="experience" placeholder="Experience">
                             {{ old('experience') }}
+                        </textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="position_held">Position Held</label>
+                    <div class="col-md-9">
+                        <textarea class="form-control ckeditor" id="position_held" name="position_held" placeholder="Position Held">
+                            {{ old('position_held') }}
                         </textarea>
                     </div>
                 </div>

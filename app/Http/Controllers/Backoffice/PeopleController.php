@@ -35,9 +35,10 @@ class PeopleController extends Controller
             'name' => 'required|string',
             'designation' => 'required|string',
             'email' => 'required|email|string',
-            'qualification' => 'required|string',
-            'experience' => 'required|string',
-            'background' => 'required|string',
+            'qualification' => 'nullable|string',
+            'experience' => 'nullable|string',
+            'position_held' => 'nullable|string',
+            'background' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
@@ -65,6 +66,7 @@ class PeopleController extends Controller
             "designation" => $request->get('designation'),
             "qualification" => $request->get('qualification'),
             "experience" => $request->get('experience'),
+            'position_held' => $request->get('position_held'),
             "background" => $request->get('background'),
         ]);
 
@@ -98,9 +100,10 @@ class PeopleController extends Controller
             'name' => 'required|string',
             'designation' => 'required|string',
             'email' => 'required|email|string',
-            'qualification' => 'required|string',
-            'experience' => 'required|string',
-            'background' => 'required|string',
+            'qualification' => 'nullable|string',
+            'experience' => 'nullable|string',
+            'position_held' => 'nullable|string',
+            'background' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
@@ -130,6 +133,7 @@ class PeopleController extends Controller
             "designation" => $request->get('designation'),
             "qualification" => $request->get('qualification'),
             "experience" => $request->get('experience'),
+            'position_held' => $request->get('position_held'),
             "background" => $request->get('background'),
         ]);
 

@@ -18,12 +18,22 @@
                         <span>{{ $people->designation }}</span><br>
                         <span class="people-email"><a href="mailto:{{ $people->email }}">{{ $people->email }}</a></span>
                     </div>
-                    <h2>Professional Qualification & Membership</h2>
-                    {!! $people->qualification !!}
-                    <h2>Experience</h2>
-                    {!! $people->experience !!}
-                    <h2>Background</h2>
-                    {!! $people->background !!}
+                    @if ($people->qualification)
+                        <h2>Professional Qualification & Membership</h2>
+                        {!! $people->qualification !!}
+                    @endif
+                    @if ($people->experience)
+                        <h2>Experience</h2>
+                        {!! $people->experience !!}
+                    @endif
+                    @if ($people->position_held)
+                        <h2>Position Held</h2>
+                        {!! $people->position_held !!}
+                    @endif
+                    @if ($people->background)
+                        <h2>Background</h2>
+                        {!! $people->background !!}
+                    @endif
                 </div>
             </div>
         </div>

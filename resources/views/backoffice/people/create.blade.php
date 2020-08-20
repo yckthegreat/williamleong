@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="card-footer">
                 <button class="btn btn-sm btn-primary" type="submit">
                     <i class="fa fa-dot-circle-o"></i> Submit

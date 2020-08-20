@@ -19,9 +19,10 @@ class CreatePeopleTable extends Migration
             $table->string('name');
             $table->string('designation');
             $table->string('email');
-            $table->longText('qualification');
-            $table->longText('experience');
-            $table->longText('background');
+            $table->longText('qualification')->nullable();
+            $table->longText('experience')->nullable();
+            $table->longText('position_held')->nullable();
+            $table->longText('background')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
