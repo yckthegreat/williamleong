@@ -23,7 +23,7 @@ Route::domain('admin.'. env('APP_URL'))->group(function () {
     });
 });
 
-Route::domain(env('APP_URL'))->group(function () {
+Route::group(['middleware' => ['domain']], function () {
     Route::get('/', 'MainController@home')->name('home');
     Route::get('/firm', 'MainController@theFirm')->name('firm');
     Route::get('/people', 'MainController@people')->name('people');
